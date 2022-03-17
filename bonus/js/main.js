@@ -5,7 +5,8 @@ const app = new Vue(
         data: {
             
         activeImage : 0,
-            
+        isAutoScroll: null,
+
         landscape : [
             {
                 nome : "Acadia National park",
@@ -64,6 +65,16 @@ const app = new Vue(
         clickedThumb(index){
             this.activeImage = index;
         },
+
+        autoScroll(){
+            this.isAutoScroll = setInterval(this.next,3000);
+            
+        },
+
+        stopScroll(){
+            clearInterval(this.isAutoScroll);
+            this.isAutoScroll = null;
+        }
     },
 });
 
