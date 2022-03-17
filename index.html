@@ -44,9 +44,9 @@
                                 <span class="my-prev-hook"></span>
                             </div>
                             <!-- immagini interne -->
-                            <div id= "thumb" style="`width: calc(100% / ${landscape.length})`"  ; >
-                                <img class = "img-fluid pointer sleepy" src="``" alt="random landscape picture">
-                            </div>`;
+                            <div id= "thumb" :style="`width: calc(100% / ${landscape.length})`" v-for="element in landscape"  >
+                                <img class="img-fluid pointer sleepy" :src="`img/${element.image}`" alt="random landscape picture">
+                            </div>
                             <!-- next -->
                             <div class="my-next position-absolute">
                                 <span class="my-next-hook"></span>
