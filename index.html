@@ -24,6 +24,7 @@
     <title>vue carousel</title>
 
 </head>
+
 <body>
 
     <main id="app"> 
@@ -35,20 +36,29 @@
 
                 <div class="col-12 p-5">
                     <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel">
+
                         <div class="my-carousel-images">
                             <!-- immagini -->
+                            <div class="carousel-element text-white position-relative" :class="(index === activeImage) ? 'active' : 'd-none'"  v-for="(element , index) in landscape">
+                                <img :src="`img/${element.image}`" alt="random landscape picture" class="w-100">
+                                <div class = "position-absolute px-3 my-bottom">
+                                    <h2>{{element.nome}}</h2>
+                                    <p>{{element.descrizione}}</p>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="my-thumbnails position-relative">
                             <!-- prev -->
-                            <div class="my-previous position-absolute">
+                            <div class="my-previous position-absolute" @click="previous()">
                                 <span class="my-prev-hook"></span>
                             </div>
                             <!-- immagini interne -->
-                            <div id= "thumb" :style="`width: calc(100% / ${landscape.length})`" v-for="element in landscape"  >
-                                <img class="img-fluid pointer sleepy" :src="`img/${element.image}`" alt="random landscape picture">
+                            <div id= "thumb" :style="`width: calc(100% / ${landscape.length})`" v-for="(element , index) in landscape"  >
+                                <img class="img-fluid pointer" :class="(index === activeImage) ? 'active-thumb' : 'sleepy'" :src="`img/${element.image}`" alt="random landscape picture">
                             </div>
                             <!-- next -->
-                            <div class="my-next position-absolute">
+                            <div class="my-next position-absolute" @click="next()" >
                                 <span class="my-next-hook"></span>
                             </div>
                         </div>

@@ -1,8 +1,11 @@
+
 const app = new Vue(
     {
-    el:"#app",
-    data: {
-
+        el:"#app",
+        data: {
+            
+        activeImage : 0,
+            
         landscape : [
             {
                 nome : "Acadia National park",
@@ -38,8 +41,25 @@ const app = new Vue(
                 nome : "Yellow stone National park",
                 descrizione : "non so se è davvero lo yellowstone.",
                 image : "yellowstone.jpg",
-            },
-        ],
+            }],
+    },
+    
+    methods:{
+        previous(){
+            if(this.activeImage == 0){
+                this.activeImage = this.landscape.length - 1;
+            }else{
+                this.activeImage--;
+            }
+        },
+
+        next(){
+            if(this.activeImage == this.landscape.length - 1){
+                this.activeImage = 0;
+            }else{
+                this.activeImage++;
+            }
+        }
     },
 });
 
